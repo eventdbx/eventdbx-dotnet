@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.suo
+.vscode/
+.idea/
+.DS_Store
+.dotnet/
+.dotnet-x64/
+.dotnet-tools/
+proto/*_capnp.cs
