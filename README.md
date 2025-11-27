@@ -19,6 +19,18 @@ DOTNET_ROOT=$(pwd)/.dotnet PATH="$DOTNET_ROOT:$PATH" \
   capnp compile -ocsharp:src/EventDbx.Client/Generated -Iproto proto/control.capnp proto/schema.capnp
 ```
 
+## Packaging (NuGet)
+
+Pack the client from the repo root (adjust `PackageVersion` as needed):
+
+```bash
+DOTNET_ROOT=$(pwd)/.dotnet PATH="$DOTNET_ROOT:$PATH" \
+  dotnet pack src/EventDbx.Client/EventDbx.Client.csproj \
+  -c Release /p:PackageVersion=0.1.0-preview1
+```
+
+Packages land in `artifacts/nuget/` alongside symbols and include this README as the NuGet readme.
+
 ## Usage
 
 ```csharp

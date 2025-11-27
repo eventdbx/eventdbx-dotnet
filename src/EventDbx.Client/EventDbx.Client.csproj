@@ -6,9 +6,32 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>EventDbx.Client</PackageId>
+    <Title>EventDBX .NET Client</Title>
+    <Description>Preview .NET client for the EventDBX control plane, using Cap'n Proto over TCP with a Noise NNpsk0 handshake.</Description>
+    <Authors>Patrick Thach</Authors>
+    <Company>EventDBX</Company>
+    <RepositoryUrl>https://github.com/eventdbx/eventdbx-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/eventdbx/eventdbx-dotnet</PackageProjectUrl>
+    <PackageTags>eventdbx;event-sourcing;capnp;noise;client;sdk</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>../../artifacts/nuget</PackageOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Capnp.Net.Runtime" Version="1.3.118" />
     <PackageReference Include="Noise.NET" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

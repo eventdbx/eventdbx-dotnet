@@ -8,4 +8,5 @@ obj/
 .dotnet/
 .dotnet-x64/
 .dotnet-tools/
+artifacts/
 proto/*_capnp.cs
