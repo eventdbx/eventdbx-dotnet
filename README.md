@@ -31,6 +31,13 @@ DOTNET_ROOT=$(pwd)/.dotnet PATH="$DOTNET_ROOT:$PATH" \
 
 Packages land in `artifacts/nuget/` alongside symbols and include this README as the NuGet readme.
 
+## CI/CD
+
+- CI: runs on PRs and pushes to `main` (`.github/workflows/ci.yml`) and executes restore, build, and tests in `Release`.
+- Release: runs on tags matching `v*` or manual dispatch with a `version` input (`.github/workflows/release.yml`). It builds/tests, packs with `/p:PackageVersion=<tag>`, uploads artifacts, pushes to NuGet.org, and creates a GitHub release with attached packages.
+- Version bump: manual workflow to create the next semver tag and trigger the release flow (`.github/workflows/version-bump.yml`). Inputs: `release_type` = patch/minor/major.
+- Secrets: add `NUGET_API_KEY` (Publish API key from nuget.org) in repo settings. The workflow skips publish if it is absent.
+
 ## Usage
 
 ```csharp
