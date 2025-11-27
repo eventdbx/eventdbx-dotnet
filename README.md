@@ -33,9 +33,10 @@ Packages land in `artifacts/nuget/` alongside symbols and include this README as
 
 ## CI/CD
 
-- CI: runs on PRs and pushes to `main` (`.github/workflows/ci.yml`) and executes restore, build, and tests in `Release`.
-- Release: runs on tags matching `v*` or manual dispatch with a `version` input (`.github/workflows/release.yml`). It builds/tests, packs with `/p:PackageVersion=<tag>`, uploads artifacts, pushes to NuGet.org, and creates a GitHub release with attached packages.
-- Version bump: manual workflow to create the next semver tag and trigger the release flow (`.github/workflows/version-bump.yml`). Inputs: `release_type` = patch/minor/major.
+- Single workflow (`.github/workflows/pipeline.yml`) handles CI and releases.
+- Triggers: PRs to `main`, pushes to `main`, and manual dispatch.
+- CI job: restore, build, test (`Release`).
+- Release job (runs on `main` pushes or manual dispatch): auto bumps the patch version from the latest `v*` tag, builds/tests, packs with `/p:PackageVersion=<next>`, pushes a new tag, publishes to NuGet.org, and creates a GitHub release attaching the packages.
 - Secrets: add `NUGET_API_KEY` (Publish API key from nuget.org) in repo settings. The workflow skips publish if it is absent.
 
 ## Usage
